@@ -1,0 +1,87 @@
+<div class="board-component">
+  <h1 class="heading">Tic Tac Toe Game</h1>
+  <table>
+    <tr>
+      <td (click)="gameService.changeGameState(0)">
+        <!-- <app-position-text [textVlaue]="5"></app-position-text> -->
+        <app-position-text
+          [textVlaue]="gameService.gameState[0]"
+        ></app-position-text>
+      </td>
+      <td (click)="gameService.changeGameState(1)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[1]"
+        ></app-position-text>
+      </td>
+      <td (click)="gameService.changeGameState(2)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[2]"
+        ></app-position-text>
+      </td>
+    </tr>
+    <tr>
+      <td (click)="gameService.changeGameState(3)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[3]"
+        ></app-position-text>
+      </td>
+      <td (click)="gameService.changeGameState(4)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[4]"
+        ></app-position-text>
+      </td>
+      <td (click)="gameService.changeGameState(5)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[5]"
+        ></app-position-text>
+      </td>
+    </tr>
+    <tr>
+      <td (click)="gameService.changeGameState(6)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[6]"
+        ></app-position-text>
+      </td>
+      <td (click)="gameService.changeGameState(7)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[7]"
+        ></app-position-text>
+      </td>
+      <td (click)="gameService.changeGameState(8)">
+        <app-position-text
+          [textVlaue]="gameService.gameState[8]"
+        ></app-position-text>
+      </td>
+    </tr>
+  </table>
+
+  <h1
+    class="heading"
+    style="color: white; text-align: center"
+    [ngClass]="{
+      green: gameService.chance === 1,
+      red: gameService.chance === 0
+    }"
+    *ngIf="!gameService.gameOver"
+  >
+    Player {{ gameService.chance }}'s Chance
+  </h1>
+
+  <h1 class="heading" *ngIf="gameService.gameOver && !gameService.draw">
+    Player {{ gameService.winner }} Wins!
+  </h1>
+
+  <h1 class="heading" *ngIf="gameService.gameOver && gameService.draw">
+    It's a Draw!
+  </h1>
+
+  <div class="button-container" *ngIf="gameService.gameOver">
+    <button
+      [disabled]="!gameService.gameOver"
+      (click)="gameService.restartGame()"
+    >
+      Restart Game
+    </button>
+  </div>
+</div>
+<!-- {{ gameService.gameState | json }} -->
